@@ -1,0 +1,69 @@
+#include<iostream>
+using namespace std;
+
+struct Node
+{
+    int data;
+    struct Node* left;
+    struct Node* right;
+};
+
+struct Node* create(int data)
+{
+    struct Node* temp=(struct Node*)malloc(sizeof(struct Node));
+    temp->data=data;
+    temp->left=temp->right=NULL;
+    return temp;
+}
+
+void insert(struct Node*root,int data)
+{
+    
+    if(data>root->data)
+    {
+        if(root->right==NULL)
+        root->right=create(data);
+        else
+        insert(root->right,data);
+    }
+    else
+    {
+        if(root->left==NULL)
+        root->left=create(data);
+        else
+        insert(root->left,data);
+    }
+}
+
+int height(struct Node* root,int count)
+{
+    if(root!=NULL)
+    {
+        count++;
+        int h1=height(root->left,count);
+        int h2=height(root->right,count);
+        if(h2>h1)
+        return h2;
+        return h1;
+    }
+        return count;
+}
+
+
+int main()
+{
+    int n,data;
+    cin>>n;
+    cin>>data;
+    struct Node * root=create(data);
+    
+    for(int i=0;i<n-1;i++)
+    {
+        cin>>data;
+        insert(root,data);
+    }
+    cout<<height(root,0);
+    
+    
+    return 0;
+}
