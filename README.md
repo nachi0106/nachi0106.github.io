@@ -59,4 +59,5 @@ Pink is sad because of some reasons, he wants to cheer up by listening to some s
 
 Constraints 1<=N<=10^5 The array consists of 1-N distinct numbers.
 
+
 Sample input 5 1 2 4 3 5 Sampe output Happy
